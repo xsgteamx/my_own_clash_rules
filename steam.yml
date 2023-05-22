@@ -1,9 +1,7 @@
 payload:
   # > Steam
-  - PROCESS-NAME,csgo.exe
   - PROCESS-NAME,steam.exe
   - PROCESS-NAME,steamwebhelper.exe
-  - PROCESS-NAME,steam++.exe
   
   - DOMAIN-SUFFIX,fanatical.com
   - DOMAIN-SUFFIX,humblebundle.com
