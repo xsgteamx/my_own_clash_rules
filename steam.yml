@@ -1,7 +1,8 @@
 payload:
-  # > Steam
+  # steam常用的域名和进程,搭配steam++使用
   - PROCESS-NAME,steam.exe
   - PROCESS-NAME,steamwebhelper.exe
+  - PROCESS-NAME,steam++.exe
   
   - DOMAIN-SUFFIX,fanatical.com
   - DOMAIN-SUFFIX,humblebundle.com
