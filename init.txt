@@ -1,0 +1,70 @@
+mixed-port: 50000
+allow-lan: true
+mode: Rule
+log-level: info
+ipv6: false
+external-controller: 127.0.0.1:7790
+clash-for-android:
+  append-system-dns: false
+hosts:
+  mtalk.google.com: 108.177.125.188
+dns:
+  enable: true
+  listen: 0.0.0.0:7874
+  ipv6: false
+  use-hosts: true
+  enhanced-mode: fake-ip
+  default-nameserver:
+    - 156.154.70.1
+    - 1.0.0.1
+    - 1.1.1.1
+    # - 223.5.5.5
+    # - 119.29.29.29
+  nameserver:
+    - https://dns.twnic.tw/dns-query
+    - tls://dns.rubyfish.cn:853 #国内红鱼
+    - https://dns.cloudflare.com/dns-query
+    # 国内DNS
+    # - https://doh.pub/dns-query
+    # - https://dns.rubyfish.cn/dns-query
+    # - tls://dns.rubyfish.cn:853
+    # - tls://dns.ipv6dns.com:853
+    # - tls://dns.alidns.com:853
+    # - https://dns.alidns.com/dns-query # 阿里 DoH DNS
+    # - https://doh.360.cn/dns-query # 360 DoH DNS
+    # - 223.5.5.5 # 阿里DNS
+    # - 180.76.76.76 # 百度DNS
+    # - 119.29.29.29 # 腾讯DNS
+    # - 117.50.11.11 # ONE DNS拦截版 恶意网站拦截、广告过滤
+    # - 117.50.10.10 # ONE DNS纯净版 直接返回其真实的响应结果
+    # - 114.114.114.114 # 114DNS
+    # - tls://dns.rubyfish.cn:853
+    # - https://dns.rubyfish.cn/dns-query
+
+
+  fallback:
+    - https://cloudflare-dns.com/dns-query
+    - https://doh.dns.sb/dns-query
+    - https://dns.twnic.tw/dns-query
+    - https://dns.google/dns-query
+    - tls://8.8.4.4:853
+    - tls://8.8.8.8:853 # 谷歌DNS
+    - tls://dns.google:853
+    - tls://one.one.one.one
+    # - 1.1.1.1 # Cloudflare DNS
+
+  #   # 红鱼(国内?)
+  #   - tls://dns.rubyfish.cn:853
+  #   - https://dns.rubyfish.cn/dns-query
+
+  fallback-filter: #响应过滤
+    geoip: true
+    ipcidr: # 在这个网段内的 IP 地址会被考虑为被污染的 IP
+      - 240.0.0.0/4
+      - 0.0.0.0/32
+
+  fake-ip-range: 198.18.0.1/16
+  fake-ip-filter: ["*.lan","stun.*.*.*","stun.*.*","time.windows.com","time.nist.gov","time.apple.com","time.asia.apple.com","*.ntp.org.cn","*.openwrt.pool.ntp.org","time1.cloud.tencent.com","time.ustc.edu.cn","pool.ntp.org","ntp.ubuntu.com","ntp.aliyun.com","ntp1.aliyun.com","ntp2.aliyun.com","ntp3.aliyun.com","ntp4.aliyun.com","ntp5.aliyun.com","ntp6.aliyun.com","ntp7.aliyun.com","time1.aliyun.com","time2.aliyun.com","time3.aliyun.com","time4.aliyun.com","time5.aliyun.com","time6.aliyun.com","time7.aliyun.com","*.time.edu.cn","time1.apple.com","time2.apple.com","time3.apple.com","time4.apple.com","time5.apple.com","time6.apple.com","time7.apple.com"
+    ,"time1.google.com","time2.google.com","time3.google.com","time4.google.com","music.163.com","*.music.163.com","*.126.net","musicapi.taihe.com","music.taihe.com","songsearch.kugou.com","trackercdn.kugou.com","*.kuwo.cn","api-jooxtt.sanook.com","api.joox.com","joox.com","y.qq.com","*.y.qq.com","streamoc.music.tc.qq.com","mobileoc.music.tc.qq.com","isure.stream.qqmusic.qq.com","dl.stream.qqmusic.qq.com","aqqmusic.tc.qq.com","amobile.music.tc.qq.com","*.xiami.com","*.music.migu.cn","music.migu.cn","*.msftconnecttest.com","*.msftncsi.com","localhost.ptlogin2.qq.com","*.*.*.srv.nintendo.net","*.*.stun.playstation.net","xbox.*.*.microsoft.com","*.ipv6.microsoft.com","*.*.xboxlive.com"
+    ,"*.gov.cn"
+    ]
